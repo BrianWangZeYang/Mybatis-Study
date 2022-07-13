@@ -4,6 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace=绑定一个对应的Dao/Mapper接口,相当于之前对接口的实现-->
 <mapper namespace="com.kuang.dao.UserMapper">
+    <select id="getUserLike" resultType="com.kuang.pojo.User">
+        /*方案一：在java代码执行的时候，传递通配符*/
+        select * from mybatis.user where name like #{value}
+        /*方案二：在sql拼接中使用通配符。此方法好处，可以避免sql注入。*/
+        /*select * from mybatis.user where name like "%#{value}%"*/
+    </select>
+
     <!--其中id后面跟接口中的方法名，相当于之前对接口方法的实现。之前实现类的返回值，现在也设置在select标签之中。-->
     <select id="getUserList" resultType="com.kuang.pojo.User">
     select * from mybatis.user
@@ -13,9 +20,18 @@
     select * from mybatis.user where id = #{id};
    </select>
 
+    <select id="getUserById2" parameterType="map" resultType="com.kuang.pojo.User">
+    select * from mybatis.user where id = #{userid};
+   </select>
+
     <!--对象中的属性，可以直接取出来-->
     <insert id="insertUser" parameterType="com.kuang.pojo.User">
     insert into mybatis.user (id, name, pwd) values(#{id},#{name},#{pwd});
+   </insert>
+
+    <!--对象中的属性，可以直接取出来-->
+    <insert id="insertUser2" parameterType="map">
+    insert into mybatis.user (id, name, pwd) values(#{userid},#{userName},#{userPwd});
    </insert>
 
     <update id="updateUser" parameterType="com.kuang.pojo.User">

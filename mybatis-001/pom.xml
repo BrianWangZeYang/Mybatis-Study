@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mybatis-001</artifactId>
-
     <!--在build中配置resources,来防止我们资源导出失败的问题-->
     <build>
         <resources>
@@ -31,5 +30,4 @@
             </resource>
         </resources>
     </build>
-
 </project>
