@@ -10,6 +10,6 @@ import java.util.List;
  * @Description
  * @date 2022/7/11 23:33
  */
-public interface UserDao {
+public interface UserMapper {
     List<User> getUserList();
 }

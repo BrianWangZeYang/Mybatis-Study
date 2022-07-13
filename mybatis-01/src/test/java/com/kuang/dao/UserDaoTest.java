@@ -1,6 +1,7 @@
 package com.kuang.dao;
 
 
+import com.kuang.pojo.User;
 import com.kuang.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -17,13 +18,13 @@ public class UserDaoTest {
 
 
             //方式一：getMapper
-            UserDao userDao = sqlSession.getMapper(UserDao.class);
-            List<pojo.User> userList = userDao.getUserList();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<User> userList = userMapper.getUserList();
 
             //方式二：
             //List<pojo.User> userList = sqlSession.selectList("com.kuang.dao.UserDao.getUserList");
 
-            for (pojo.User user : userList) {
+            for (User user : userList) {
                 System.out.println(user);
             }
         } catch (Exception e) {
