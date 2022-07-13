@@ -34,4 +34,77 @@ public class UserDaoTest {
             sqlSession.close();
         }
     }
+
+    @Test
+    public void getUserByIdTest(){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = MybatisUtils.getSqlSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            User user = userMapper.getUserById(1);
+            System.out.println(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+
+    }
+    @Test
+    public void insertUser(){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = MybatisUtils.getSqlSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            int res = userMapper.insertUser(new User(4,"wzy","888"));
+            if (res > 0){
+                System.out.println("插入成功!"+res);
+            }
+            //插入语句需要手动提交事务
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void updateUser(){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = MybatisUtils.getSqlSession();
+            //第一步：获取接口
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+            int ref = mapper.updateUser(new User(4, "王泽阳", "123456"));
+            if (ref > 0){
+                System.out.println("修改成功");
+            }
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void deleteUser(){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = MybatisUtils.getSqlSession();
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+            int res = mapper.deleteUser(4);
+            if (res>0){
+                System.out.println("删除成功！");
+            }
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+    }
 }
