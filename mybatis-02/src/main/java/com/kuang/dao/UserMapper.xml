@@ -6,7 +6,7 @@
 <mapper namespace="com.kuang.dao.UserMapper">
 
     <!--其中id后面跟接口中的方法名，相当于之前对接口方法的实现。之前实现类的返回值，现在也设置在select标签之中。-->
-    <select id="getUserList" resultType="com.kuang.pojo.User">
+    <select id="getUserList" resultType="User">
     select * from mybatis.user
    </select>
 

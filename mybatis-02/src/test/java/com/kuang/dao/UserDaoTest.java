@@ -6,12 +6,11 @@ import com.kuang.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class UserDaoTest {
     @Test
-    public void getUserLike(){
+    public void getUserList(){
         SqlSession sqlSession = null;
         try {
             sqlSession = MybatisUtils.getSqlSession();
