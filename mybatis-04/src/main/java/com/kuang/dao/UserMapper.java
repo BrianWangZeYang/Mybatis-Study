@@ -12,4 +12,7 @@ public interface UserMapper {
 
     //分页
     List<User> getUserByLimit(Map<String,Integer> map);
+
+    //分页2
+    List<User> getUserByRowBounds();
 }

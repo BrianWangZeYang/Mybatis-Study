@@ -3,6 +3,7 @@ package com.kuang.dao;
 
 import com.kuang.pojo.User;
 import com.kuang.utils.MybatisUtils;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -12,7 +13,27 @@ import java.util.List;
 
 public class UserDaoTest {
     static Logger logger = Logger.getLogger(UserMapper.class);
+    @Test
+    public void getUserByRowBounds(){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = MybatisUtils.getSqlSession();
 
+            //RowBounds实现分页
+            RowBounds rowBounds = new RowBounds(0, 2);
+
+            //通过java代码层面实现分页
+            List<User> userList = sqlSession.selectList("com.kuang.dao.UserMapper.getUserByRowBounds",null,rowBounds);
+            for (User user : userList) {
+                System.out.println(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+    }
+    
     @Test
     public void getUserByLimit(){
         SqlSession sqlSession = null;
