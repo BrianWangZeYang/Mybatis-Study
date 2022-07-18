@@ -17,11 +17,19 @@ public class UserMapperTest {
     public void test(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        List<User> users = mapper.getUsers();
-        for (User user : users) {
-            System.out.println(user);
-        }
-        sqlSession.close();
+//        List<User> users = mapper.getUsers();
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
 
+//        User userByID = mapper.getUserByID(1);
+//        System.out.println(userByID);
+
+//        mapper.addUser(new User(9, "CRUD", "888"));
+
+//        mapper.updateUser(new User(8,"CRUD2","999"));
+
+        mapper.deleteUser(9);
+        sqlSession.close();
     }
 }
