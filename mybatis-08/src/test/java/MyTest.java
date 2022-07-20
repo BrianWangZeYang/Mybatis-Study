@@ -48,8 +48,8 @@ public class MyTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
         HashMap map = new HashMap();
-        map.put("title","Java如此简单2");
-        map.put("author","狂神说2");
+        map.put("title","Java如此简单3");
+        //map.put("author","狂神说");
         map.put("id","10d2f29066984741949862b27895a573");
         mapper.updateBlog(map);
         sqlSession.close();

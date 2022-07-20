@@ -8,16 +8,19 @@
         insert into mybatis.blog(id, title, author, create_time, views)
         values (#{id},#{title}, #{author},#{createTime}, #{views} )
     </insert>
+    <sql id="if-title-author">
+        <if test="title != null">
+            title = #{title}
+        </if>
+        <if test="author != null">
+            and author=#{author}
+        </if>
+    </sql>
 
     <select id="queryBlogIF" parameterType="map" resultType="Blog">
         select * from mybatis.blog
         <where>
-            <if test="title != null">
-                title = #{title}
-            </if>
-            <if test="author != null">
-                and author=#{author}
-            </if>
+            <include refid="if-title-author"/>
         </where>
 
     </select>
@@ -42,12 +45,7 @@
     <update id="updateBlog" parameterType="map" >
         update  mybatis.blog
         <set>
-            <if test="title!=null">
-                title = #{title},
-            </if>
-            <if test="author!=null">
-                author =#{author}
-            </if>
+          <include refid="if-title-author"/>
         </set>
         where id = #{id}
     </update>
