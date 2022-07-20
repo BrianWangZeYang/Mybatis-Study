@@ -20,4 +20,8 @@ public interface BlogMapper {
 
     //更新博客
     int updateBlog(Map map);
+
+    //查询第1、2、3号记录的博客(此处为了演示方便，将blog表中的值修改为1，2，3，4)
+    List<Blog> queryBlogForeach(Map map);
+
 }

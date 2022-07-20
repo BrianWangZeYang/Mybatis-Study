@@ -49,4 +49,16 @@
         </set>
         where id = #{id}
     </update>
+    <!--
+        我们现在传递一个万能的map，这map中可以存在一个集合。
+    -->
+    <select id="queryBlogForeach" parameterType="map" resultType="blog">
+        select * from mybatis.blog
+        <where>
+            <foreach  collection="ids" item="id" open="and (" close=")" separator="or">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
+
 </mapper>
