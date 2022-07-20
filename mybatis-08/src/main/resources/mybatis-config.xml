@@ -10,7 +10,8 @@
     <settings>
         <!--标准的日志工厂实现-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
-
+        <!--是否开启自动驼峰命名规则-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <!--可以给实体类取别名-->
@@ -32,7 +33,6 @@
     </environments>
 
     <mappers>
-        <mapper class="com.kuang.dao.TeacherMapper"/>
-        <mapper class="com.kuang.dao.StudentMapper"/>
+        <mapper class="com.kuang.dao.BlogMapper"/>
     </mappers>
 </configuration>
