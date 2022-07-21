@@ -25,7 +25,7 @@ public class MyTest {
         User user2 = mapper2.queryUsersById(1);
         System.out.println(user2);
         System.out.println("push test");
-        System.out.println("pull test");
+        System.out.println("pull test2");
         
 
         System.out.println(user==user2);
